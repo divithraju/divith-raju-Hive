@@ -1,0 +1,32 @@
+Step 1
+
+create table table1(pid INT, pname STRING, drug STRING,gender STRING,tot_amt INT) row format delimited fields terminated by ',' stored as textfile;
+
+load data local inpath '/home/ubuntu/data10.txt' into table table1;
+
+Step 2
+
+CREATE TABLE partition_bucketed(pid INT, pname STRING, drug STRING, gender 
+
+STRING, tot_amt STRING)
+
+PARTITIONED BY(country STRING)
+
+CLUSTERED BY(pid) 
+
+INTO 4 BUCKETS Row format delimited 
+
+fields terminated by  ','
+
+Stored as textfile;
+
+INSERT OVERWRITE TABLE partition_bucketed PARTITION (country='IND') SELECT * FROM table1;
+
+
+
+
+
+
+
+
+
