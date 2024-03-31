@@ -1,1 +1,1 @@
-# Hive-ACID
+# Hive
