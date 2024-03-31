@@ -1,0 +1,25 @@
+Text File Format 
+
+create table table1(pid INT, pname STRING, drug STRING,gender STRING,tot_amt INT) row format delimited fields terminated by ',' stored as textfile;
+
+load data local inpath '/home/ubuntu/<file>.txt' into table table1;
+
+load data local inpath '/home/ubuntu/<file>.txt' into table table1;
+
+show create table table1;
+
+ORC File Format
+
+create table table2(pid INT, pname STRING, drug STRING,gender STRING,tot_amt INT)row format delimited fields terminated by ',' STORED AS orc ;
+
+insert overwrite table table2 select * from table1;
+
+show create table table2;
+
+
+
+Now run the below command and check for the time difference 
+
+select count(*) from table1 where tot_amt =110;
+
+select count(*) from table2 where tot_amt =110;
